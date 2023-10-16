@@ -17,18 +17,18 @@ namespace lostbkb
     class BigNote
     {
         public string name;
-        public List<string> numbers = new List<string>(); 
-        public void AddNumber(string number)
+        public List<string> note = new List<string>(); 
+        public void AddNumber(string zam)
         {
-            numbers.Add(number); 
+            note.Add(zam); 
         }
 
         public void PrintNumbers()
         {
             Console.WriteLine(name);
-            foreach (string number in numbers)
+            foreach (string notessss in note)
             {
-                Console.WriteLine(number); 
+                Console.WriteLine(notessss); 
             }
         }
 

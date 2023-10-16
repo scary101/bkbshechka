@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 
@@ -49,10 +50,8 @@ namespace lostbkb
             f.name = "Пойти на пары";
             f.deck = "Крепко спать дома)";
             f.data = new DateTime(2023, 10, 11, 9, 30, 0);
-            third_note.Add(f);
-
-
-            
+            third_note.Add(f);   
+           
             Menu();
             while (true)
             {
@@ -91,33 +90,33 @@ namespace lostbkb
         }
         static void strelka(ConsoleKeyInfo key)
         {
-           
-            
-                Console.SetCursorPosition(0, indexdop);
-                Console.WriteLine("  ");
-                if (key.Key == ConsoleKey.UpArrow)
+            int max = 5;
+            if (index == 0)
+            {
+                max--;
+            }
+            Console.SetCursorPosition(0, indexdop);
+            Console.WriteLine("  ");
+            if (key.Key == ConsoleKey.UpArrow)
+            {
+
+                indexdop--;
+                if (indexdop <= 1)
                 {
-
-                    indexdop--;
-                    if (indexdop <= 1)
-                    {
-                        indexdop = 4;
-                    }
+                    indexdop = max - 1;
                 }
-                else if (key.Key == ConsoleKey.DownArrow)
+            }
+            else if (key.Key == ConsoleKey.DownArrow)
+            {
+                indexdop++;
+                if (indexdop >= max)
                 {
-                    indexdop++;
-                    if (indexdop >= 5)
-                    {
-                        indexdop = 2;
-                    }
+                    indexdop = 2;
                 }
+            }
 
-                Console.SetCursorPosition(0, indexdop);
-                Console.WriteLine("->");
-                
-            
-
+            Console.SetCursorPosition(0, indexdop);
+            Console.WriteLine("->");
         }
         static void ChangeData()
         {
@@ -139,26 +138,24 @@ namespace lostbkb
         {
             if (index == 0)
             {
-                SmallNote currentNote = second_note[indexdop - 2];
+                SmallNote zametka = second_note[indexdop - 2];
                 Console.Clear();
-                Console.WriteLine("Заметка: " + currentNote.name);
-                Console.WriteLine("Описание: " + currentNote.deck);
-                Console.WriteLine("До когда сделать: " + currentNote.data);
+                Console.WriteLine("Заметка: " + zametka.name);
+                Console.WriteLine("Описание: " + zametka.deck);
+                Console.WriteLine("До когда сделать: " + zametka.data);
                 Console.WriteLine("Нажмите любую клавишу чтобы выйти");
                 Console.ReadKey();
             }
             else if (index == 1)
             {
-                SmallNote currentNote = third_note[indexdop - 2];
+                SmallNote zametka = third_note[indexdop - 2];
                 Console.Clear();
-                Console.WriteLine("Заметка: " + currentNote.name);
-                Console.WriteLine("Описание: " + currentNote.deck);
-                Console.WriteLine("До когда сделать: " + currentNote.data);
+                Console.WriteLine("Заметка: " + zametka.name);
+                Console.WriteLine("Описание: " + zametka.deck);
+                Console.WriteLine("До когда сделать: " + zametka.data);
                 Console.WriteLine("Нажмите любую клавишу чтобы выйти");
                 Console.ReadKey();
             }
-            
-
         }
     
     
